@@ -1,0 +1,20 @@
+<div *ngIf="experience">
+  <div class="container w-75 animate__animated animate__fadeIn">
+    <h1>{{ experience.title }}</h1>
+    <div class="d-flex justify-content-between">
+      <div>
+        <small class="text-muted fs-5">{{ experience.createdBy }}</small>
+        <br>
+        <small class="text-muted">{{ experience.createdAt | timeFromNow }}</small>
+      </div>
+      <div>
+        <a [routerLink]="['/edit', experience.id]" class="btn btn-light btn-circle experience-card-button ms-1"><i class='bx bx-pencil'></i></a>
+        <button type="button" (click)="deleteExperience(experience.id)" class="btn btn-light btn-circle experience-card-button ms-1"><i class='bx bx-trash'></i></button>
+      </div>
+    </div>
+    
+    <p class="fw-lighter fs-4 my-4">{{ experience.description }}</p>
+    <img *ngIf="experience.imageUrl" [src]="experience.imageUrl" class="img-fluid rounded-3 shadow" alt="{{ experience.title }}">
+    <p class="fw-lighter fs-4 my-4">{{ experience.content }}</p>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+GET http://localhost:3000/experience
+
+###
+
+GET http://localhost:3000/experience/234r2iuho3ho2323
+
+###
+
+POST http://localhost:3000/experience/create
+Content-Type: application/json
+
+{
+  "title": "Second",
+  "description": "Example description second",
+  "content": "Example content second",
+  "imageUrl": "Example imageUrl second",
+  "createdBy": "Example user second"
+}
+
+###
+
+PUT http://localhost:3000/experience/update/61d92722208d1e08d5bb5a8b
+Content-Type: application/json
+
+{
+  "title": "Second updated",
+  "description": "Example description",
+  "content": "Example content",
+  "imageUrl": "Example imageUrl",
+  "createdBy": "Example user"
+}
+
+###
+
+DELETE http://localhost:3000/experience/delete/61d92722208d1e08d5bb5a8b

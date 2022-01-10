@@ -1,0 +1,33 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type ExperienceType {
+  id: ID!
+  title: String!
+  description: String!
+  content: String!
+  imageUrl: String!
+  createdBy: String!
+  createdAt: String
+}
+
+type Query {
+  experiences: [ExperienceType!]!
+  experience(id: String!): ExperienceType!
+}
+
+type Mutation {
+  createExperience(input: experienceInput!): ExperienceType!
+  updateExperience(input: experienceInput!, id: String!): ExperienceType!
+  deleteExperience(id: String!): ExperienceType!
+}
+
+input experienceInput {
+  title: String!
+  description: String!
+  content: String!
+  imageUrl: String!
+  createdBy: String!
+  createdAt: String
+}
