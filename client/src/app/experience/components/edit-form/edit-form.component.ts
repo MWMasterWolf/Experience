@@ -33,26 +33,26 @@ export class EditFormComponent implements OnInit {
   }
 
   getExperience(id: string): void {
-    this.experienceService.getExperience(id)
-      .subscribe((response: ApiResponse) => {
-        this.experience = response.experience;
+    // this.experienceService.getExperience(id)
+    //   .subscribe((response: ApiResponse) => {
+    //     this.experience = response.experience;
         
-        this.experienceForm.setValue({
-          title: response.experience.title,
-          description: response.experience.description,
-          content: response.experience.content,
-          imageUrl: response.experience.imageUrl,
-          createdBy: response.experience.createdBy,
-        });
-      }
-    );
+    //     this.experienceForm.setValue({
+    //       title: response.experience.title,
+    //       description: response.experience.description,
+    //       content: response.experience.content,
+    //       imageUrl: response.experience.imageUrl,
+    //       createdBy: response.experience.createdBy,
+    //     });
+    //   }
+    // );
   }
 
   onSubmit(): void {
-    this.experienceService.updateExperience(
-      this.activatedRoute.snapshot.params.id, 
-      this.experienceForm.controls
-    )
-      .subscribe((response: Experience) => this.router.navigate(['/']));
+    // this.experienceService.updateExperience(
+    //   this.activatedRoute.snapshot.params.id, 
+    //   this.experienceForm.controls
+    // )
+    //   .subscribe((response: Experience) => this.router.navigate(['/']));
   }
 }

@@ -18,12 +18,12 @@ import { EditFormComponent } from './components/edit-form/edit-form.component';
 
 @NgModule({
   declarations: [
-    ExperienceListComponent,
-    CreateExperienceComponent,
     CreateFormComponent,
-    ExperienceDetailComponent,
+    EditFormComponent,
+    CreateExperienceComponent,
     EditExperienceComponent,
-    EditFormComponent
+    ExperienceDetailComponent,
+    ExperienceListComponent
   ],
   imports: [
     CommonModule,

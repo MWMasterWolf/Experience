@@ -1,21 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-
-// Components
 import { HeaderComponent } from './template/header/header.component';
-
-// Pipes
-import { TimeFromNowPipe } from './pipes/time-from-now.pipe';
+import { RouterModule } from '@angular/router';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
+import { TimeFromNowPipe } from './pipes/time-from-now.pipe';
 
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    TimeFromNowPipe,
-    SafeUrlPipe
+    SafeUrlPipe,
+    TimeFromNowPipe
   ],
   imports: [
     CommonModule,
@@ -23,8 +19,6 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
   ],
   exports: [
     HeaderComponent,
-    TimeFromNowPipe,
-    SafeUrlPipe
   ]
 })
 export class SharedModule { }
