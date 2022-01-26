@@ -22,11 +22,11 @@ export class ExperienceListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getExperiences();
-    //this.experienceService.refresh();
+    this.experienceService.refresh();
   }
 
   getExperiences(): void {
-    //this.experienceService.getExperiences().subscribe((response: ApiResponse) => this.experiences = response.experiences );
+    this.experienceService.getExperiences().subscribe((response: ApiResponse) => this.experiences = response.experiences );
   }
 
   deleteExperience(id: string): void {
@@ -40,15 +40,15 @@ export class ExperienceListComponent implements OnInit {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        // this.experienceService.deleteExperience(id).subscribe((response: Experience) => {
-        //   this.experienceService.refresh();
-        //   this.router.navigate(['/experiences']);
-        //   Swal.fire(
-        //     'Deleted!',
-        //     'Experience deleted.',
-        //     'success'
-        //   )
-        // });
+        this.experienceService.deleteExperience(id).subscribe((response: Experience) => {
+          this.experienceService.refresh();
+          this.router.navigate(['/experiences']);
+          Swal.fire(
+            'Deleted!',
+            'Experience deleted.',
+            'success'
+          )
+        });
       }
     })
   }

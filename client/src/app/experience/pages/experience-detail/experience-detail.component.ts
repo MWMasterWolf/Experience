@@ -26,8 +26,8 @@ export class ExperienceDetailComponent implements OnInit {
   }
 
   getExperience(id: string): void {
-    // this.experienceService.getExperience(id)
-    //   .subscribe((response: ApiResponse) => this.experience = response.experience);
+    this.experienceService.getExperience(id)
+      .subscribe((response: ApiResponse) => this.experience = response.experience);
   }
 
   deleteExperience(id: string): void {
@@ -41,15 +41,15 @@ export class ExperienceDetailComponent implements OnInit {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        // this.experienceService.deleteExperience(id).subscribe((response: Experience) => {
-        //   this.experienceService.refresh();
-        //   this.router.navigate(['/experiences']);
-        //   Swal.fire(
-        //     'Deleted!',
-        //     'Experience deleted.',
-        //     'success'
-        //   )
-        // });
+        this.experienceService.deleteExperience(id).subscribe((response: Experience) => {
+          this.experienceService.refresh();
+          this.router.navigate(['/experiences']);
+          Swal.fire(
+            'Deleted!',
+            'Experience deleted.',
+            'success'
+          )
+        });
       }
     })
   }
