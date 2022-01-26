@@ -19,6 +19,8 @@ import { TimeFromNowPipe } from './pipes/time-from-now.pipe';
   ],
   exports: [
     HeaderComponent,
+    SafeUrlPipe,
+    TimeFromNowPipe
   ]
 })
 export class SharedModule { }

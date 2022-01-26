@@ -1,9 +1,9 @@
-version: '1.5' # specify docker-compose version
+version: '3.3' # specify docker-compose version
 
 # Define the services/containers to be run
 services:
   angular: # name of the first service
-    image: experience-client:v5
+    image: experience-client:v6
     build: client # specify the directory of the Dockerfile
     ports:
       - "4200:4200" # specify port forewarding
