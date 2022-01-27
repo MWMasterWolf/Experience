@@ -7,27 +7,51 @@ type ExperienceType {
   title: String!
   description: String!
   content: String!
-  imageUrl: String!
+  imageUrl: String
   createdBy: String!
   createdAt: String
+}
+
+type LaptopType {
+  id: ID!
+  brand: String!
+  model: String!
+  price: Int!
+  size: String!
+  specs: String!
+  imageUrl: String
 }
 
 type Query {
   experiences: [ExperienceType!]!
   experience(id: String!): ExperienceType!
+  laptops: [LaptopType!]!
+  laptop(id: String!): LaptopType!
 }
 
 type Mutation {
   createExperience(input: experienceInput!): ExperienceType!
   updateExperience(input: experienceInput!, id: String!): ExperienceType!
   deleteExperience(id: String!): ExperienceType!
+  createLaptop(input: LaptopInput!): LaptopType!
+  updateLaptop(input: LaptopInput!, id: String!): LaptopType!
+  deleteLaptop(id: String!): LaptopType!
 }
 
 input experienceInput {
   title: String!
   description: String!
   content: String!
-  imageUrl: String!
+  imageUrl: String
   createdBy: String!
   createdAt: String
+}
+
+input LaptopInput {
+  brand: String!
+  model: String!
+  price: Int!
+  size: String!
+  specs: String!
+  imageUrl: String
 }
