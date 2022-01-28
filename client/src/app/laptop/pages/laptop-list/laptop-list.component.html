@@ -1,0 +1,35 @@
+<div class="row">
+  <div *ngFor="let laptop of laptops" class="col-xl-4 col-lg-4 col-md-6 col-sm-12 my-4">
+    <div class="card laptop-card shadow animate__animated animate__fadeIn">
+      <img *ngIf="laptop.imageUrl" [src]="laptop.imageUrl" class="card-img-top" alt="{{ laptop.brand }}">
+      <div class="card-body p-4">
+        <a [routerLink]="['/laptop', laptop.id]" class="laptop-card-title">
+          <h3 class="card-title text-dark">{{ laptop.brand }}</h3>
+        </a>
+        <p class="card-text text-muted">{{ laptop.model }}</p>
+        <div class="d-flex justify-content-between">
+          <div class="laptop-card-author">
+            <small class="text-muted">{{ laptop.price }}</small><br>
+            <small class="fw-lighter text-muted">{{ laptop.size }}</small>
+          </div>
+          
+          <div class="laptop-card-buttons">
+            <a [routerLink]="['/laptop', laptop.id]" class="btn btn-light btn-circle laptop-card-button"><i class='bx bx-right-arrow-alt'></i></a>
+
+            <a [routerLink]="['/edit', laptop.id]" class="btn btn-light btn-circle laptop-card-button ms-1"><i class='bx bx-pencil'></i></a>
+
+            <button type="button" (click)="deleteLaptop(laptop.id)" class="btn btn-light btn-circle laptop-card-button ms-1"><i class='bx bx-trash'></i></button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="laptops.length === 0" class="d-flex justify-content-center animate__animated animate__fadeIn">
+  <div class="w-50 ">
+    <img src="assets/img/no-data.png" class="img-fluid" alt="No result">
+    <h1 class="text-center">Uh Oh! Apparently there are no new laptops yet</h1>
+    <h2 class="text-muted text-center">Come back later or <a [routerLink]="['/create']" class="text-dark">write one yourself</a></h2>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div *ngIf="inputs">
+  <div class="row mt-4 animate__animated animate__fadeIn">
+    <form [formGroup]="laptopForm" (ngSubmit)="onSubmit()">
+      <div *ngFor="let input of inputs; let i = index" class="col-6 mb-4">
+        <div class="form-floating">
+          <input type="text" class="form-control" [formControlName]="input.name" [id]="input.name" [placeholder]="input.name | titlecase" autocomplete="off">
+          <label [attr.for]="input.name">{{ input.name | titlecase }}</label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-secondary">Publish</button>
+    </form>
+  </div>    
+</div>  

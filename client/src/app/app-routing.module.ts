@@ -8,14 +8,17 @@ import { CreateExperienceComponent } from './experience/pages/create-experience/
 import { EditExperienceComponent } from './experience/pages/edit-experience/edit-experience.component';
 
 import { TestComponent } from './laptop/components/test/test.component';
+import { CreateLaptopComponent } from './laptop/pages/create-laptop/create-laptop.component';
+import { EditLaptopComponent } from './laptop/pages/edit-laptop/edit-laptop.component';
+import { LaptopListComponent } from './laptop/pages/laptop-list/laptop-list.component';
+import { LaptopDetailComponent } from './laptop/pages/laptop-detail/laptop-detail.component';
 
 const routes: Routes = [
-  { path: 'experiences', component: ExperienceListComponent },
-  { path: 'experience/:id', component: ExperienceDetailComponent },
-  { path: 'create', component: CreateExperienceComponent },
-  { path: 'edit/:id', component: EditExperienceComponent },
-  { path: 'test', component: TestComponent },
-  { path: '', redirectTo: 'experiences', pathMatch: 'full' }
+  { path: 'laptops', component: LaptopListComponent },
+  { path: 'laptop/:id', component: LaptopDetailComponent },
+  { path: 'create', component: CreateLaptopComponent },
+  { path: 'edit/:id', component: EditLaptopComponent },
+  { path: '', redirectTo: 'laptops', pathMatch: 'full' }
 ];
 
 @NgModule({

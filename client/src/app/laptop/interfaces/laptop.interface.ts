@@ -4,6 +4,7 @@ export interface ApiResponse {
 }
 
 export interface Laptop {
+  readonly id: string;
   readonly brand: string;
   readonly model: string;
   readonly price: number;

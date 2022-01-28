@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Apollo, gql } from 'apollo-angular';
+import { Apollo, gql, QueryRef } from 'apollo-angular';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Laptop } from '../interfaces/laptop.interface';
+import { ApiResponse, Laptop } from '../interfaces/laptop.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LaptopService {
+  laptopQuery!: QueryRef<ApiResponse>;
 
   constructor(private apollo: Apollo) { }
+
+  refresh() {
+    this.laptopQuery.refetch();
+  }
 
   getIntrospection(): any {
     const GET_INTROSPECTION = `
@@ -27,6 +32,57 @@ export class LaptopService {
     })
     .valueChanges.pipe(
       map(response => response.data.__type.fields)
+    );
+  }
+
+  getLaptops(): Observable<ApiResponse> {
+    const GET_LAPTOPS = `
+      {
+        laptops {
+          id
+          brand
+          model
+          price
+          size
+          specs
+          imageUrl
+        }
+      }
+    `;
+
+    this.laptopQuery = this.apollo.watchQuery<ApiResponse>({
+        query: gql(GET_LAPTOPS)
+    });
+
+    return this.laptopQuery
+    .valueChanges.pipe(
+      map((response) => response.data)
+    );
+  }
+
+  getLaptop(id: string): Observable<ApiResponse> {
+    const GET_LAPTOP = `
+      query GetLaptop($id: String!) {
+        laptop (id: $id) {
+          id
+          brand
+          model
+          price
+          size
+          specs
+          imageUrl
+        }
+      }
+    `;
+
+    return this.apollo.watchQuery<ApiResponse>({
+      query: gql(GET_LAPTOP),
+      variables: {
+        id: id
+      }
+    })
+    .valueChanges.pipe(
+      map((response) => response.data)
     );
   }
 
@@ -67,6 +123,31 @@ export class LaptopService {
       }
     }).pipe(
       map(response => response.data.createLaptop)
+    );
+  }
+
+  deleteLaptop(id: string): Observable<Laptop> {
+    const DELETE_LAPTOP = `
+      mutation DeleteLaptop($id: String!){
+        deleteLaptop(id: $id){
+          id
+          brand
+          model
+          price
+          size
+          specs
+          imageUrl
+        }
+      }
+    `;
+
+    return this.apollo.mutate<any>({
+      mutation: gql(DELETE_LAPTOP),
+      variables: {
+        id: id
+      }
+    }).pipe(
+      map(response => response.data.deleteLaptop)
     );
   }
 }
