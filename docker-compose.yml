@@ -3,13 +3,13 @@ version: '3.3' # specify docker-compose version
 # Define the services/containers to be run
 services:
   angular: # name of the first service
-    image: experience-client:v6
+    image: experience-client:v7.1
     build: client # specify the directory of the Dockerfile
     ports:
       - "4200:4200" # specify port forewarding
 
   nestjs: #name of the second service
-    image: experience-backend:v1.5
+    image: experience-backend:v1.7
     build: backend
     ports:
       - "3000:3000" #specify ports forwarding

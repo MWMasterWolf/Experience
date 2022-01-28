@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LaptopService } from '../../services/laptop.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class CreateFormComponent implements OnInit {
   formControl: any = [];
 
   constructor(
-    private laptopService: LaptopService
+    private laptopService: LaptopService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -21,14 +23,11 @@ export class CreateFormComponent implements OnInit {
   }
 
   getIntrospection(): void {
-
     this.laptopService.getIntrospection().subscribe((response: any) => {
-      
       response = response.slice(1);
       response.forEach((element: any) => {
         this.formControl[element.name] = new FormControl('');
       });
-      
       this.laptopForm = new FormGroup(this.formControl);
       this.inputs = response;
     });
@@ -36,7 +35,7 @@ export class CreateFormComponent implements OnInit {
 
   onSubmit(): void {
     this.laptopService.createLaptop(this.laptopForm.controls)
-    .subscribe((response: any) => console.log(response)
+    .subscribe((response: any) => this.router.navigate(['/'])
     );
   }
 

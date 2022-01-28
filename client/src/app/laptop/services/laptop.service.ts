@@ -126,6 +126,55 @@ export class LaptopService {
     );
   }
 
+  updateLaptop(id: string, formData: any): Observable<Laptop> {
+    const UPDATE_EXPERIENCE = `
+      mutation UpdateLaptop(
+        $id: String!
+        $brand: String!
+        $model: String!
+        $price: Int!
+        $size: String!
+        $specs: String!
+        $imageUrl: String!
+      ) {
+        updateLaptop(
+          id: $id
+          input: {
+            brand: $brand
+            model: $model
+            price: $price
+            size: $size
+            specs: $specs
+            imageUrl: $imageUrl
+          }
+        ) {
+          id
+          brand
+          model
+          price
+          size
+          specs
+          imageUrl
+        }
+      }
+    `;
+
+    return this.apollo.mutate<any>({
+      mutation: gql(UPDATE_EXPERIENCE),
+      variables: {
+        id: id,
+        brand: formData.brand.value,
+        model: formData.model.value,
+        price: parseInt(formData.price.value),
+        size: formData.size.value,
+        specs: formData.specs.value,
+        imageUrl: formData.imageUrl.value
+      }
+    }).pipe(
+      map(response => response.data.updateLaptop)
+    );
+  }
+
   deleteLaptop(id: string): Observable<Laptop> {
     const DELETE_LAPTOP = `
       mutation DeleteLaptop($id: String!){

@@ -1,3 +1,4 @@
+<h2>Recently added laptops</h2>
 <div class="row">
   <div *ngFor="let laptop of laptops" class="col-xl-4 col-lg-4 col-md-6 col-sm-12 my-4">
     <div class="card laptop-card shadow animate__animated animate__fadeIn">
@@ -9,8 +10,7 @@
         <p class="card-text text-muted">{{ laptop.model }}</p>
         <div class="d-flex justify-content-between">
           <div class="laptop-card-author">
-            <small class="text-muted">{{ laptop.price }}</small><br>
-            <small class="fw-lighter text-muted">{{ laptop.size }}</small>
+            <h3 class="text-dark fw-bold">$ {{ laptop.price | number }}</h3>
           </div>
           
           <div class="laptop-card-buttons">

@@ -9,7 +9,7 @@ import { LaptopModule } from './laptop/laptop.module';
 @Module({
   imports: [
     ExperienceModule, 
-    MongooseModule.forRoot('mongodb://localhost/laptops'),
+    MongooseModule.forRoot('mongodb://database/laptops'),
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql'
     }),

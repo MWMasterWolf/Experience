@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap, tap } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { LaptopService } from '../../services/laptop.service';
 import { Laptop } from '../../interfaces/laptop.interface';
 
@@ -46,9 +46,11 @@ export class EditFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.laptopService.createLaptop(this.laptopForm.controls)
-    .subscribe((response: any) => console.log(response)
-    );
+    this.laptopService.updateLaptop(
+      this.activatedRoute.snapshot.params.id, 
+      this.laptopForm.controls
+    )
+      .subscribe(() => this.router.navigate(['/']));
   }
 
 }
